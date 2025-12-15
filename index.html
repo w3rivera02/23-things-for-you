@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>23 Things I Want You to Know</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #cfe9ff, #eaf6ff);
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35) 0%, transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.25) 0%, transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(255,255,255,0.2) 0%, transparent 50%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #2c4a6e;
+    }
+
+    .container {
+      backdrop-filter: blur(6px);
+      max-width: 420px;
+      padding: 24px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    button {
+      background: #6fb7ff;
+      border: none;
+      color: white;
+      padding: 14px 20px;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .card {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 20px;
+      background: white;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .message {
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+    }
+
+    .verse {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: #4f6f91;
+    }
+
+    .dino {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.75rem;
+      color: #6b8fb3;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>23 Things I Want You to Know</h1>
+    <p class="subtitle">For the days you need comfort. Press the button.</p>
+
+    <button onclick="showReminder()">Show me one reminder</button>
+
+    <div id="card" class="card" style="display:none;">
+      <div class="dino">🦕</div>
+      <div class="message" id="message"></div>
+      <div class="verse" id="verse"></div>
+    </div>
+
+    <footer>
+      Happy 23 🤍 This little place exists because you exist.
+    </footer>
+  </div>
+
+  <script>
+    const reminders = [
+      {
+        message: "You don’t need to have everything figured out at 23.",
+        verse: "\"Trust in the Lord with all thine heart; and lean not unto thine own understanding.\" — Proverbs 3:5"
+      },
+      {
+        message: "Rest is not laziness. It’s necessary.",
+        verse: "\"Come unto me, all ye that labour and are heavy laden, and I will give you rest.\" — Matthew 11:28"
+      },
+      {
+        message: "You are allowed to grow slowly.",
+        verse: "\"He hath made every thing beautiful in his time.\" — Ecclesiastes 3:11"
+      },
+      {
+        message: "Feeling lost does not mean you’re failing.",
+        verse: "\"The Lord shall guide thee continually.\" — Isaiah 58:11"
+      },
+      {
+        message: "You are deeply loved, even on quiet days.",
+        verse: "\"I have loved thee with an everlasting love.\" — Jeremiah 31:3"
+      },
+      {
+        message: "It’s okay to change your mind.",
+        verse: "\"Commit thy way unto the Lord.\" — Psalm 37:5"
+      },
+      {
+        message: "You don’t need to earn love.",
+        verse: "\"We love him, because he first loved us.\" — 1 John 4:19"
+      },
+      {
+        message: "Your feelings are valid.",
+        verse: "\"The Lord is nigh unto them that are of a broken heart.\" — Psalm 34:18"
+      },
+      {
+        message: "You are not behind.",
+        verse: "\"The steps of a good man are ordered by the Lord.\" — Psalm 37:23"
+      },
+      {
+        message: "You don’t have to be strong all the time.",
+        verse: "\"My grace is sufficient for thee.\" — 2 Corinthians 12:9"
+      },
+      {
+        message: "God is not disappointed in you.",
+        verse: "\"There is therefore now no condemnation.\" — Romans 8:1"
+      },
+      {
+        message: "You are doing better than you think.",
+        verse: "\"Let us not be weary in well doing.\" — Galatians 6:9"
+      },
+      {
+        message: "You are allowed to ask for help.",
+        verse: "\"Ask, and it shall be given you.\" — Matthew 7:7"
+      },
+      {
+        message: "You are seen.",
+        verse: "\"Thou God seest me.\" — Genesis 16:13"
+      },
+      {
+        message: "It’s okay to cry.",
+        verse: "\"Thou tellest my wanderings: put thou my tears into thy bottle.\" — Psalm 56:8"
+      },
+      {
+        message: "You are not alone.",
+        verse: "\"Lo, I am with you alway.\" — Matthew 28:20"
+      },
+      {
+        message: "Your life has meaning.",
+        verse: "\"For I know the thoughts that I think toward you.\" — Jeremiah 29:11"
+      },
+      {
+        message: "You don’t need to rush healing.",
+        verse: "\"The Lord is nigh unto all them that call upon him.\" — Psalm 145:18"
+      },
+      {
+        message: "You are becoming someone beautiful.",
+        verse: "\"He which hath begun a good work in you will perform it.\" — Philippians 1:6"
+      },
+      {
+        message: "Your kindness matters.",
+        verse: "\"Inasmuch as ye have done it unto one of the least of these.\" — Matthew 25:40"
+      },
+      {
+        message: "You are allowed to hope.",
+        verse: "\"They that wait upon the Lord shall renew their strength.\" — Isaiah 40:31"
+      },
+      {
+        message: "You are loved more than you know.",
+        verse: "\"Nothing shall be able to separate us from the love of God.\" — Romans 8:38–39"
+      },
+      {
+        message: "You are a gift. Happy 23 🤍",
+        verse: "The world is better because you’re in it."
+      }
+    ];
+
+    function showReminder() {
+      const random = Math.floor(Math.random() * reminders.length);
+      document.getElementById('message').innerText = reminders[random].message;
+      document.getElementById('verse').innerText = reminders[random].verse;
+      document.getElementById('card').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
